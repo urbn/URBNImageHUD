@@ -1,40 +1,22 @@
-//
-//  SVProgressHUD.m
-//
-//  Created by Sam Vermette on 27.03.11.
-//  Copyright 2011 Sam Vermette. All rights reserved.
-//
-//  https://github.com/samvermette/SVProgressHUD
-//
 
 #if !__has_feature(objc_arc)
-#error SVProgressHUD is ARC only. Either turn on ARC for the project or use -fobjc-arc flag
+#error URBNImageHUD is ARC only. Either turn on ARC for the project or use -fobjc-arc flag
 #endif
 
-#import "SVProgressHUD.h"
+#import "URBNImageHUD.h"
 #import <QuartzCore/QuartzCore.h>
 
-NSString * const SVProgressHUDDidReceiveTouchEventNotification = @"SVProgressHUDDidReceiveTouchEventNotification";
-NSString * const SVProgressHUDWillDisappearNotification = @"SVProgressHUDWillDisappearNotification";
-NSString * const SVProgressHUDDidDisappearNotification = @"SVProgressHUDDidDisappearNotification";
-NSString * const SVProgressHUDWillAppearNotification = @"SVProgressHUDWillAppearNotification";
-NSString * const SVProgressHUDDidAppearNotification = @"SVProgressHUDDidAppearNotification";
+static UIColor *URBNImageHUDBackgroundColor;
+static UIColor *URBNImageHUDForegroundColor;
+static UIFont *URBNImageHUDFont;
+static UIImage *URBNImageHUDProgressImage;
+static NSTimeInterval URBNImageHUDProgressAnimationDuration;
 
-NSString * const SVProgressHUDStatusUserInfoKey = @"SVProgressHUDStatusUserInfoKey";
+static const CGFloat URBNImageHUDParallaxDepthPoints = 10;
 
-static UIColor *SVProgressHUDBackgroundColor;
-static UIColor *SVProgressHUDForegroundColor;
-static CGFloat SVProgressHUDRingThickness;
-static UIFont *SVProgressHUDFont;
-static UIImage *SVProgressHUDProgressImage;
-static UIImage *SVProgressHUDSuccessImage;
-static UIImage *SVProgressHUDErrorImage;
+@interface URBNImageHUD ()
 
-static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
-
-@interface SVProgressHUD ()
-
-@property (nonatomic, readwrite) SVProgressHUDMaskType maskType;
+@property (nonatomic, readwrite) URBNImageHUDMaskType maskType;
 @property (nonatomic, strong, readonly) NSTimer *fadeOutTimer;
 @property (nonatomic, readonly, getter = isClear) BOOL clear;
 
@@ -53,7 +35,7 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
 
 - (void)showProgress:(float)progress
               status:(NSString*)string
-            maskType:(SVProgressHUDMaskType)hudMaskType;
+            maskType:(URBNImageHUDMaskType)hudMaskType;
 
 - (void)showImage:(UIImage*)image
            status:(NSString*)status
@@ -63,7 +45,6 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
 
 - (void)setStatus:(NSString*)string;
 - (void)registerNotifications;
-- (NSDictionary *)notificationUserInfo;
 - (void)moveToPoint:(CGPoint)newCenter rotateAngle:(CGFloat)angle;
 - (void)positionHUD:(NSNotification*)notification;
 - (NSTimeInterval)displayDurationForString:(NSString*)string;
@@ -71,11 +52,11 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
 @end
 
 
-@implementation SVProgressHUD
+@implementation URBNImageHUD
 
-+ (SVProgressHUD*)sharedView {
++ (URBNImageHUD*)sharedView {
     static dispatch_once_t once;
-    static SVProgressHUD *sharedView;
+    static URBNImageHUD *sharedView;
     dispatch_once(&once, ^ { sharedView = [[self alloc] initWithFrame:[[UIScreen mainScreen] bounds]]; });
     return sharedView;
 }
@@ -88,69 +69,53 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
 
 + (void)setBackgroundColor:(UIColor *)color {
     [self sharedView].hudView.backgroundColor = color;
-    SVProgressHUDBackgroundColor = color;
+    URBNImageHUDBackgroundColor = color;
 }
 
 + (void)setForegroundColor:(UIColor *)color {
     [self sharedView];
-    SVProgressHUDForegroundColor = color;
+    URBNImageHUDForegroundColor = color;
 }
 
 + (void)setFont:(UIFont *)font {
     [self sharedView];
-    SVProgressHUDFont = font;
+    URBNImageHUDFont = font;
 }
 
-+ (void)setProgressImage:(UIImage*)image{
++ (void)setAnimationImage:(UIImage*)image{
     [self sharedView];
-    SVProgressHUDProgressImage = image;
+    URBNImageHUDProgressImage = image;
 }
 
-+ (void)setSuccessImage:(UIImage *)image {
++ (void)setImageAnimationDuration:(NSTimeInterval)animationDuration{
     [self sharedView];
-    SVProgressHUDSuccessImage = image;
-}
-
-+ (void)setErrorImage:(UIImage *)image {
-    [self sharedView];
-    SVProgressHUDErrorImage = image;
+    URBNImageHUDProgressAnimationDuration = animationDuration;
 }
 
 #pragma mark - Show Methods
 
 + (void)show {
-    [[self sharedView] showProgress:-1 status:nil maskType:SVProgressHUDMaskTypeNone];
+    [[self sharedView] showProgress:-1 status:nil maskType:URBNImageHUDMaskTypeNone];
 }
 
 + (void)showWithStatus:(NSString *)status {
-    [[self sharedView] showProgress:-1 status:status maskType:SVProgressHUDMaskTypeNone];
+    [[self sharedView] showProgress:-1 status:status maskType:URBNImageHUDMaskTypeNone];
 }
 
-+ (void)showWithMaskType:(SVProgressHUDMaskType)maskType {
++ (void)showWithMaskType:(URBNImageHUDMaskType)maskType {
     [[self sharedView] showProgress:-1 status:nil maskType:maskType];
 }
 
-+ (void)showWithStatus:(NSString*)status maskType:(SVProgressHUDMaskType)maskType {
++ (void)showWithStatus:(NSString*)status maskType:(URBNImageHUDMaskType)maskType {
     [[self sharedView] showProgress:-1 status:status maskType:maskType];
 }
 
 #pragma mark - Show then dismiss methods
 
-+ (void)showSuccessWithStatus:(NSString *)string {
-    [self sharedView];
-    [self showImage:SVProgressHUDSuccessImage status:string];
-}
-
-+ (void)showErrorWithStatus:(NSString *)string {
-    [self sharedView];
-    [self showImage:SVProgressHUDErrorImage status:string];
-}
-
 + (void)showImage:(UIImage *)image status:(NSString *)string {
-    NSTimeInterval displayInterval = [[SVProgressHUD sharedView] displayDurationForString:string];
+    NSTimeInterval displayInterval = [[URBNImageHUD sharedView] displayDurationForString:string];
     [[self sharedView] showImage:image status:string duration:displayInterval];
 }
-
 
 #pragma mark - Dismiss Methods
 
@@ -188,12 +153,10 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.activityCount = 0;
         
-        SVProgressHUDBackgroundColor = [UIColor whiteColor];
-        SVProgressHUDForegroundColor = [UIColor blackColor];
-        SVProgressHUDFont = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
-        SVProgressHUDSuccessImage = [[UIImage imageNamed:@"SVProgressHUD.bundle/success"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        SVProgressHUDErrorImage = [[UIImage imageNamed:@"SVProgressHUD.bundle/error"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        SVProgressHUDRingThickness = 4;
+        URBNImageHUDBackgroundColor = [UIColor whiteColor];
+        URBNImageHUDForegroundColor = [UIColor blackColor];
+        URBNImageHUDFont = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+        URBNImageHUDProgressAnimationDuration = 1.0;
     }
 	
     return self;
@@ -205,13 +168,13 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
     
     switch (self.maskType) {
             
-        case SVProgressHUDMaskTypeBlack: {
+        case URBNImageHUDMaskTypeBlack: {
             [[UIColor colorWithWhite:0 alpha:0.5] set];
             CGContextFillRect(context, self.bounds);
             break;
         }
             
-        case SVProgressHUDMaskTypeGradient: {
+        case URBNImageHUDMaskTypeGradient: {
             
             size_t locationsCount = 2;
             CGFloat locations[2] = {0.0f, 1.0f};
@@ -346,16 +309,10 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
 }
 
 
-- (NSDictionary *)notificationUserInfo
-{
-    return (self.stringLabel.text ? @{SVProgressHUDStatusUserInfoKey : self.stringLabel.text} : nil);
-}
-
-
 - (void)positionHUD:(NSNotification*)notification {
     
     CGFloat keyboardHeight;
-    double animationDuration;
+    double animationDuration = 1.0;
     
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
     
@@ -439,13 +396,9 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
     self.hudView.center = CGPointMake(newCenter.x + self.offsetFromCenter.horizontal, newCenter.y + self.offsetFromCenter.vertical);
 }
 
-- (void)overlayViewDidReceiveTouchEvent:(id)sender forEvent:(UIEvent *)event {
-    [[NSNotificationCenter defaultCenter] postNotificationName:SVProgressHUDDidReceiveTouchEventNotification object:event];
-}
-
 #pragma mark - Master show/dismiss methods
 
-- (void)showProgress:(float)progress status:(NSString*)string maskType:(SVProgressHUDMaskType)hudMaskType {
+- (void)showProgress:(float)progress status:(NSString*)string maskType:(URBNImageHUDMaskType)hudMaskType {
     
     if(!self.overlayView.superview){
         NSEnumerator *frontToBackWindows = [[[UIApplication sharedApplication]windows]reverseObjectEnumerator];
@@ -481,7 +434,7 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
         [self.hudView.layer addSublayer:self.indefiniteAnimatedLayer];
     }
     
-    if(self.maskType != SVProgressHUDMaskTypeNone) {
+    if(self.maskType != URBNImageHUDMaskTypeNone) {
         self.overlayView.userInteractionEnabled = YES;
         self.accessibilityLabel = string;
         self.isAccessibilityElement = YES;
@@ -497,10 +450,6 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
     [self positionHUD:nil];
     
     if(self.alpha != 1) {
-        NSDictionary *userInfo = [self notificationUserInfo];
-        [[NSNotificationCenter defaultCenter] postNotificationName:SVProgressHUDWillAppearNotification
-                                                            object:nil
-                                                          userInfo:userInfo];
         
         [self registerNotifications];
         self.hudView.transform = CGAffineTransformScale(self.hudView.transform, 1.3, 1.3);
@@ -522,9 +471,6 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
                                  self.alpha = 1;
                          }
                          completion:^(BOOL finished){
-                             [[NSNotificationCenter defaultCenter] postNotificationName:SVProgressHUDDidAppearNotification
-                                                                                 object:nil
-                                                                               userInfo:userInfo];
                              UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil);
                              UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, string);
                          }];
@@ -540,7 +486,7 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
     if(![self.class isVisible])
         [self.class show];
     
-    self.imageView.tintColor = SVProgressHUDForegroundColor;
+    self.imageView.tintColor = URBNImageHUDForegroundColor;
     self.imageView.image = image;
     self.imageView.hidden = NO;
     
@@ -548,7 +494,7 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
     [self updatePosition];
     [self.indefiniteAnimatedLayer removeFromSuperlayer];
     
-    if(self.maskType != SVProgressHUDMaskTypeNone) {
+    if(self.maskType != URBNImageHUDMaskTypeNone) {
         self.accessibilityLabel = string;
         self.isAccessibilityElement = YES;
     } else {
@@ -564,10 +510,6 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
 }
 
 - (void)dismiss {
-    NSDictionary *userInfo = [self notificationUserInfo];
-    [[NSNotificationCenter defaultCenter] postNotificationName:SVProgressHUDWillDisappearNotification
-                                                        object:nil
-                                                      userInfo:userInfo];
     
     self.activityCount = 0;
     [UIView animateWithDuration:0.15
@@ -596,10 +538,6 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
                              _indefiniteAnimatedLayer = nil;
 
                              UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil);
-
-                             [[NSNotificationCenter defaultCenter] postNotificationName:SVProgressHUDDidDisappearNotification
-                                                                                 object:nil
-                                                                               userInfo:userInfo];
                              
                              // Tell the rootViewController to update the StatusBar appearance
                              UIViewController *rootController = [[UIApplication sharedApplication] keyWindow].rootViewController;
@@ -614,7 +552,7 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
 }
 
 
-#pragma mark - Ring progress animation
+#pragma mark - Progress animation
 
 - (CALayer*)indefiniteAnimatedLayer{
     
@@ -623,15 +561,15 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
         _indefiniteAnimatedLayer = [CALayer layer];
         
         CGPoint center = CGPointMake(CGRectGetWidth(_hudView.frame)/2, CGRectGetHeight(_hudView.frame)/2);
-        CGSize size = SVProgressHUDProgressImage.size;
+        CGSize size = URBNImageHUDProgressImage.size;
         CGRect rect = CGRectMake(0, 0, size.width, size.height);
         
         _indefiniteAnimatedLayer.frame = rect;
         _indefiniteAnimatedLayer.position = center;
         
-        _indefiniteAnimatedLayer.contents = (id)[SVProgressHUDProgressImage CGImage];
+        _indefiniteAnimatedLayer.contents = (id)[URBNImageHUDProgressImage CGImage];
 
-        NSTimeInterval animationDuration = 1;
+        NSTimeInterval animationDuration = URBNImageHUDProgressAnimationDuration;
         CAMediaTimingFunction *linearCurve = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
         
         CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
@@ -666,7 +604,7 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
 }
 
 - (BOOL)isClear { // used for iOS 7
-    return (self.maskType == SVProgressHUDMaskTypeClear || self.maskType == SVProgressHUDMaskTypeNone);
+    return (self.maskType == URBNImageHUDMaskTypeClear || self.maskType == URBNImageHUDMaskTypeNone);
 }
 
 - (UIControl *)overlayView {
@@ -674,7 +612,6 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
         _overlayView = [[UIControl alloc] initWithFrame:[UIScreen mainScreen].bounds];
         _overlayView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _overlayView.backgroundColor = [UIColor clearColor];
-        [_overlayView addTarget:self action:@selector(overlayViewDidReceiveTouchEvent:forEvent:) forControlEvents:UIControlEventTouchDown];
     }
     return _overlayView;
 }
@@ -682,7 +619,7 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
 - (UIView *)hudView {
     if(!_hudView) {
         _hudView = [[UIView alloc] initWithFrame:CGRectZero];
-        _hudView.backgroundColor = SVProgressHUDBackgroundColor;
+        _hudView.backgroundColor = URBNImageHUDBackgroundColor;
         _hudView.layer.cornerRadius = 14;
         _hudView.layer.masksToBounds = YES;
         
@@ -690,12 +627,12 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
                                      UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin);
         
         UIInterpolatingMotionEffect *effectX = [[UIInterpolatingMotionEffect alloc] initWithKeyPath: @"center.x" type: UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-        effectX.minimumRelativeValue = @(-SVProgressHUDParallaxDepthPoints);
-        effectX.maximumRelativeValue = @(SVProgressHUDParallaxDepthPoints);
+        effectX.minimumRelativeValue = @(-URBNImageHUDParallaxDepthPoints);
+        effectX.maximumRelativeValue = @(URBNImageHUDParallaxDepthPoints);
         
         UIInterpolatingMotionEffect *effectY = [[UIInterpolatingMotionEffect alloc] initWithKeyPath: @"center.y" type: UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-        effectY.minimumRelativeValue = @(-SVProgressHUDParallaxDepthPoints);
-        effectY.maximumRelativeValue = @(SVProgressHUDParallaxDepthPoints);
+        effectY.minimumRelativeValue = @(-URBNImageHUDParallaxDepthPoints);
+        effectY.maximumRelativeValue = @(URBNImageHUDParallaxDepthPoints);
         
         [_hudView addMotionEffect: effectX];
         [_hudView addMotionEffect: effectY];
@@ -712,8 +649,8 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10;
 		_stringLabel.adjustsFontSizeToFitWidth = YES;
         _stringLabel.textAlignment = NSTextAlignmentCenter;
 		_stringLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-		_stringLabel.textColor = SVProgressHUDForegroundColor;
-		_stringLabel.font = SVProgressHUDFont;
+		_stringLabel.textColor = URBNImageHUDForegroundColor;
+		_stringLabel.font = URBNImageHUDFont;
         _stringLabel.numberOfLines = 0;
     }
     

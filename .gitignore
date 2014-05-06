@@ -1,8 +1,72 @@
-# CocoaPods
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control?
-#
-# Pods/
+# xcode noise
+[bB]uild/*
+*/[bB]uild/*
+*.pbxuser
+!default.pbxuser
+*.mode*
+!default.mode1v3
+!default.mode2v3
+*.perspective
+*.perspectivev3
+!default.perspectivev3
 
+
+# xcode
+xcuserdata
+*.xcuserstate
+# *.xcworkspace
+# *.xcodeproj/*.xcworkspacedata
+!default.xcworkspace
+profile
+*.xccheckout
+
+
+*.moved-aside*
+
+# IB
+*~.nib
+*~.xib
+
+# Cocoapods
+[Pp]ods/
+
+# Crashlytics
+Crashlytics.framework
+
+# merge stuff
+*.orig
+
+# old skool
+.svn
+
+# mercurial
+.hg
+
+# osx noise
+.DS_Store
+.profile
+*.swp
+Icon?
+*.lock
+*~
+*.dat
+*.dep
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+#taskpaper
+*(Autosaved)*
+.env
+bin
+.bundle
+docs
+
+test-reports
+
+#taskpaper
+*(Autosaved)*

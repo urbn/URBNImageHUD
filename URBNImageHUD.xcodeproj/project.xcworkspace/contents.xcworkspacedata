@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:URBNImageHud.xcodeproj">
+      location = "self:URBNImageHUD.xcodeproj">
    </FileRef>
 </Workspace>

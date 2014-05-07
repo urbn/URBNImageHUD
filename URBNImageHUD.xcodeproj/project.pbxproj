@@ -21,7 +21,7 @@
 		A2D28DEE191965A200B66C24 /* URBNImageHudTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D28DED191965A200B66C24 /* URBNImageHudTests.m */; };
 		A2D28DFF1919669800B66C24 /* URBNDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D28DFD1919669800B66C24 /* URBNDemoViewController.m */; };
 		A2D28E001919669800B66C24 /* URBNDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2D28DFE1919669800B66C24 /* URBNDemoViewController.xib */; };
-		A2D28E051919793100B66C24 /* URBNImageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D28E041919793100B66C24 /* URBNImageHUD.m */; };
+		A2D28E08191A891400B66C24 /* URBNImageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D28E07191A891400B66C24 /* URBNImageHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +54,8 @@
 		A2D28DFC1919669800B66C24 /* URBNDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URBNDemoViewController.h; sourceTree = "<group>"; };
 		A2D28DFD1919669800B66C24 /* URBNDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URBNDemoViewController.m; sourceTree = "<group>"; };
 		A2D28DFE1919669800B66C24 /* URBNDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = URBNDemoViewController.xib; sourceTree = "<group>"; };
-		A2D28E031919793100B66C24 /* URBNImageHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URBNImageHUD.h; sourceTree = "<group>"; };
-		A2D28E041919793100B66C24 /* URBNImageHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URBNImageHUD.m; sourceTree = "<group>"; };
+		A2D28E06191A891400B66C24 /* URBNImageHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URBNImageHUD.h; path = URBNImageHUD/URBNImageHUD.h; sourceTree = SOURCE_ROOT; };
+		A2D28E07191A891400B66C24 /* URBNImageHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URBNImageHUD.m; path = URBNImageHUD/URBNImageHUD.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +85,7 @@
 		A2D28DBC191965A200B66C24 = {
 			isa = PBXGroup;
 			children = (
-				A2D28DCE191965A200B66C24 /* URBNImageHud */,
+				A2D28DCE191965A200B66C24 /* URBNImageHUD */,
 				A2D28DE7191965A200B66C24 /* URBNImageHudTests */,
 				A2D28DC7191965A200B66C24 /* Frameworks */,
 				A2D28DC6191965A200B66C24 /* Products */,
@@ -112,14 +112,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A2D28DCE191965A200B66C24 /* URBNImageHud */ = {
+		A2D28DCE191965A200B66C24 /* URBNImageHUD */ = {
 			isa = PBXGroup;
 			children = (
+				A2D28E06191A891400B66C24 /* URBNImageHUD.h */,
+				A2D28E07191A891400B66C24 /* URBNImageHUD.m */,
 				A2D28E0119196B7D00B66C24 /* Demo */,
-				A2D28E021919793100B66C24 /* URBNImageHUD */,
 				A2D28DDA191965A200B66C24 /* Images.xcassets */,
 				A2D28DCF191965A200B66C24 /* Supporting Files */,
 			);
+			name = URBNImageHUD;
 			path = URBNImageHud;
 			sourceTree = "<group>";
 		};
@@ -162,15 +164,6 @@
 				A2D28DFE1919669800B66C24 /* URBNDemoViewController.xib */,
 			);
 			name = Demo;
-			sourceTree = "<group>";
-		};
-		A2D28E021919793100B66C24 /* URBNImageHUD */ = {
-			isa = PBXGroup;
-			children = (
-				A2D28E031919793100B66C24 /* URBNImageHUD.h */,
-				A2D28E041919793100B66C24 /* URBNImageHUD.m */,
-			);
-			path = URBNImageHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,7 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2D28E051919793100B66C24 /* URBNImageHUD.m in Sources */,
+				A2D28E08191A891400B66C24 /* URBNImageHUD.m in Sources */,
 				A2D28DD5191965A200B66C24 /* main.m in Sources */,
 				A2D28DD9191965A200B66C24 /* URBNAppDelegate.m in Sources */,
 				A2D28DFF1919669800B66C24 /* URBNDemoViewController.m in Sources */,

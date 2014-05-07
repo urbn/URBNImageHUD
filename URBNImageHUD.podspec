@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "URBNImageHUD"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "This is a simple hud which does one thing… It rotates an image to show indeterminant progress."
 
   s.description  = <<-DESC
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.platform  	= :ios, '7.0'
   s.requires_arc = true
 
-  s.source_files  = "URBNImageHUD/URBNImageHUD/*.{h,m}"
+  s.source_files  = "URBNImageHud/URBNImageHUD.{h,m}"
   s.frameworks = 'UIKit', 'Foundation', 'QuartzCore'
 
 end

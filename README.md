@@ -8,6 +8,13 @@ This hud was born out of the ashes of [SVProgressHUD](https://github.com/samverm
 
 (If you must ask, we did try to modify SVProgressHUD so that we could push our changes back, but the changes were so large, that it seemed best to make a clean break.)
 
+## Setup
+
+Add this to your Podfile:
+
+```
+pod 'URBNImageHUD', :git => 'git@github.com:urbn/URBNImageHUD.git'
+```
 
 
 

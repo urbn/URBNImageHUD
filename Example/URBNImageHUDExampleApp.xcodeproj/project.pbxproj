@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45DB6AE2191ACB8E00A883C7 /* URBNImageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 45DB6AE1191ACB8E00A883C7 /* URBNImageHUD.m */; };
 		A2D28DC9191965A200B66C24 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D28DC8191965A200B66C24 /* Foundation.framework */; };
 		A2D28DCB191965A200B66C24 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D28DCA191965A200B66C24 /* CoreGraphics.framework */; };
 		A2D28DCD191965A200B66C24 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D28DCC191965A200B66C24 /* UIKit.framework */; };
@@ -21,7 +22,6 @@
 		A2D28DEE191965A200B66C24 /* URBNImageHudTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D28DED191965A200B66C24 /* URBNImageHudTests.m */; };
 		A2D28DFF1919669800B66C24 /* URBNDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D28DFD1919669800B66C24 /* URBNDemoViewController.m */; };
 		A2D28E001919669800B66C24 /* URBNDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2D28DFE1919669800B66C24 /* URBNDemoViewController.xib */; };
-		A2D28E08191A891400B66C24 /* URBNImageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D28E07191A891400B66C24 /* URBNImageHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,23 +30,25 @@
 			containerPortal = A2D28DBD191965A200B66C24 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A2D28DC4191965A200B66C24;
-			remoteInfo = URBNImageHud;
+			remoteInfo = URBNImageHUDExampleApp;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A2D28DC5191965A200B66C24 /* URBNImageHUD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URBNImageHUD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		45DB6AE0191ACB8E00A883C7 /* URBNImageHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URBNImageHUD.h; sourceTree = "<group>"; };
+		45DB6AE1191ACB8E00A883C7 /* URBNImageHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URBNImageHUD.m; sourceTree = "<group>"; };
+		A2D28DC5191965A200B66C24 /* URBNImageHUDExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URBNImageHUDExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2D28DC8191965A200B66C24 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A2D28DCA191965A200B66C24 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A2D28DCC191965A200B66C24 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		A2D28DD0191965A200B66C24 /* URBNImageHUD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "URBNImageHUD-Info.plist"; sourceTree = "<group>"; };
+		A2D28DD0191965A200B66C24 /* URBNImageHUDExampleApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "URBNImageHUDExampleApp-Info.plist"; sourceTree = "<group>"; };
 		A2D28DD2191965A200B66C24 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A2D28DD4191965A200B66C24 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A2D28DD6191965A200B66C24 /* URBNImageHUD-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "URBNImageHUD-Prefix.pch"; sourceTree = "<group>"; };
+		A2D28DD6191965A200B66C24 /* URBNImageHUDExampleApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "URBNImageHUDExampleApp-Prefix.pch"; sourceTree = "<group>"; };
 		A2D28DD7191965A200B66C24 /* URBNAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URBNAppDelegate.h; sourceTree = "<group>"; };
 		A2D28DD8191965A200B66C24 /* URBNAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URBNAppDelegate.m; sourceTree = "<group>"; };
 		A2D28DDA191965A200B66C24 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		A2D28DE0191965A200B66C24 /* URBNImageHUD.temp_caseinsensitive_renameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = URBNImageHUD.temp_caseinsensitive_renameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2D28DE0191965A200B66C24 /* URBNImageHUDExampleApp.temp_caseinsensitive_renameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = URBNImageHUDExampleApp.temp_caseinsensitive_renameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2D28DE1191965A200B66C24 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A2D28DE9191965A200B66C24 /* URBNImageHUDTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "URBNImageHUDTests-Info.plist"; sourceTree = "<group>"; };
 		A2D28DEB191965A200B66C24 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -54,8 +56,6 @@
 		A2D28DFC1919669800B66C24 /* URBNDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URBNDemoViewController.h; sourceTree = "<group>"; };
 		A2D28DFD1919669800B66C24 /* URBNDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URBNDemoViewController.m; sourceTree = "<group>"; };
 		A2D28DFE1919669800B66C24 /* URBNDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = URBNDemoViewController.xib; sourceTree = "<group>"; };
-		A2D28E06191A891400B66C24 /* URBNImageHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URBNImageHUD.h; path = URBNImageHUD/URBNImageHUD.h; sourceTree = SOURCE_ROOT; };
-		A2D28E07191A891400B66C24 /* URBNImageHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URBNImageHUD.m; path = URBNImageHUD/URBNImageHUD.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,11 +82,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45DB6ADF191ACB8E00A883C7 /* URBNImageHUD */ = {
+			isa = PBXGroup;
+			children = (
+				45DB6AE0191ACB8E00A883C7 /* URBNImageHUD.h */,
+				45DB6AE1191ACB8E00A883C7 /* URBNImageHUD.m */,
+			);
+			name = URBNImageHUD;
+			path = ../URBNImageHUD;
+			sourceTree = SOURCE_ROOT;
+		};
 		A2D28DBC191965A200B66C24 = {
 			isa = PBXGroup;
 			children = (
-				A2D28DCE191965A200B66C24 /* URBNImageHUD */,
-				A2D28DE7191965A200B66C24 /* URBNImageHudTests */,
+				45DB6ADF191ACB8E00A883C7 /* URBNImageHUDExampleApp */,
+				A2D28DCE191965A200B66C24 /* URBNImageHUDExample */,
+				A2D28DE7191965A200B66C24 /* URBNImageHUDExampleTests */,
 				A2D28DC7191965A200B66C24 /* Frameworks */,
 				A2D28DC6191965A200B66C24 /* Products */,
 			);
@@ -95,8 +106,8 @@
 		A2D28DC6191965A200B66C24 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A2D28DC5191965A200B66C24 /* URBNImageHUD.app */,
-				A2D28DE0191965A200B66C24 /* URBNImageHUD.temp_caseinsensitive_renameTests.xctest */,
+				A2D28DC5191965A200B66C24 /* URBNImageHUDExampleApp.app */,
+				A2D28DE0191965A200B66C24 /* URBNImageHUDExampleApp.temp_caseinsensitive_renameTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,37 +123,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A2D28DCE191965A200B66C24 /* URBNImageHUD */ = {
+		A2D28DCE191965A200B66C24 /* URBNImageHUDExample */ = {
 			isa = PBXGroup;
 			children = (
-				A2D28E06191A891400B66C24 /* URBNImageHUD.h */,
-				A2D28E07191A891400B66C24 /* URBNImageHUD.m */,
-				A2D28E0119196B7D00B66C24 /* Demo */,
+				A2D28DD7191965A200B66C24 /* URBNAppDelegate.h */,
+				A2D28DD8191965A200B66C24 /* URBNAppDelegate.m */,
+				A2D28DFC1919669800B66C24 /* URBNDemoViewController.h */,
+				A2D28DFD1919669800B66C24 /* URBNDemoViewController.m */,
+				A2D28DFE1919669800B66C24 /* URBNDemoViewController.xib */,
 				A2D28DDA191965A200B66C24 /* Images.xcassets */,
 				A2D28DCF191965A200B66C24 /* Supporting Files */,
 			);
-			name = URBNImageHUD;
-			path = URBNImageHud;
+			name = URBNImageHUDExample;
+			path = URBNImageHUDExampleApp;
 			sourceTree = "<group>";
 		};
 		A2D28DCF191965A200B66C24 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A2D28DD0191965A200B66C24 /* URBNImageHUD-Info.plist */,
+				A2D28DD0191965A200B66C24 /* URBNImageHUDExampleApp-Info.plist */,
 				A2D28DD1191965A200B66C24 /* InfoPlist.strings */,
 				A2D28DD4191965A200B66C24 /* main.m */,
-				A2D28DD6191965A200B66C24 /* URBNImageHUD-Prefix.pch */,
+				A2D28DD6191965A200B66C24 /* URBNImageHUDExampleApp-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A2D28DE7191965A200B66C24 /* URBNImageHudTests */ = {
+		A2D28DE7191965A200B66C24 /* URBNImageHUDExampleTests */ = {
 			isa = PBXGroup;
 			children = (
 				A2D28DED191965A200B66C24 /* URBNImageHudTests.m */,
 				A2D28DE8191965A200B66C24 /* Supporting Files */,
 			);
-			path = URBNImageHudTests;
+			name = URBNImageHUDExampleTests;
+			path = URBNImageHUDExampleAppTests;
 			sourceTree = "<group>";
 		};
 		A2D28DE8191965A200B66C24 /* Supporting Files */ = {
@@ -154,24 +168,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A2D28E0119196B7D00B66C24 /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-				A2D28DD7191965A200B66C24 /* URBNAppDelegate.h */,
-				A2D28DD8191965A200B66C24 /* URBNAppDelegate.m */,
-				A2D28DFC1919669800B66C24 /* URBNDemoViewController.h */,
-				A2D28DFD1919669800B66C24 /* URBNDemoViewController.m */,
-				A2D28DFE1919669800B66C24 /* URBNDemoViewController.xib */,
-			);
-			name = Demo;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A2D28DC4191965A200B66C24 /* URBNImageHUD */ = {
+		A2D28DC4191965A200B66C24 /* URBNImageHUDExampleApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A2D28DF1191965A200B66C24 /* Build configuration list for PBXNativeTarget "URBNImageHUD" */;
+			buildConfigurationList = A2D28DF1191965A200B66C24 /* Build configuration list for PBXNativeTarget "URBNImageHUDExampleApp" */;
 			buildPhases = (
 				A2D28DC1191965A200B66C24 /* Sources */,
 				A2D28DC2191965A200B66C24 /* Frameworks */,
@@ -181,14 +183,14 @@
 			);
 			dependencies = (
 			);
-			name = URBNImageHUD;
-			productName = URBNImageHud;
-			productReference = A2D28DC5191965A200B66C24 /* URBNImageHUD.app */;
+			name = URBNImageHUDExampleApp;
+			productName = URBNImageHUDExampleApp;
+			productReference = A2D28DC5191965A200B66C24 /* URBNImageHUDExampleApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A2D28DDF191965A200B66C24 /* URBNImageHUDTests */ = {
+		A2D28DDF191965A200B66C24 /* URBNImageHUDExampleAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A2D28DF4191965A200B66C24 /* Build configuration list for PBXNativeTarget "URBNImageHUDTests" */;
+			buildConfigurationList = A2D28DF4191965A200B66C24 /* Build configuration list for PBXNativeTarget "URBNImageHUDExampleAppTests" */;
 			buildPhases = (
 				A2D28DDC191965A200B66C24 /* Sources */,
 				A2D28DDD191965A200B66C24 /* Frameworks */,
@@ -199,9 +201,9 @@
 			dependencies = (
 				A2D28DE6191965A200B66C24 /* PBXTargetDependency */,
 			);
-			name = URBNImageHUDTests;
+			name = URBNImageHUDExampleAppTests;
 			productName = URBNImageHudTests;
-			productReference = A2D28DE0191965A200B66C24 /* URBNImageHUD.temp_caseinsensitive_renameTests.xctest */;
+			productReference = A2D28DE0191965A200B66C24 /* URBNImageHUDExampleApp.temp_caseinsensitive_renameTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -219,7 +221,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A2D28DC0191965A200B66C24 /* Build configuration list for PBXProject "URBNImageHUD" */;
+			buildConfigurationList = A2D28DC0191965A200B66C24 /* Build configuration list for PBXProject "URBNImageHUDExampleApp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -231,8 +233,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A2D28DC4191965A200B66C24 /* URBNImageHUD */,
-				A2D28DDF191965A200B66C24 /* URBNImageHUDTests */,
+				A2D28DC4191965A200B66C24 /* URBNImageHUDExampleApp */,
+				A2D28DDF191965A200B66C24 /* URBNImageHUDExampleAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -263,7 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2D28E08191A891400B66C24 /* URBNImageHUD.m in Sources */,
+				45DB6AE2191ACB8E00A883C7 /* URBNImageHUD.m in Sources */,
 				A2D28DD5191965A200B66C24 /* main.m in Sources */,
 				A2D28DD9191965A200B66C24 /* URBNAppDelegate.m in Sources */,
 				A2D28DFF1919669800B66C24 /* URBNDemoViewController.m in Sources */,
@@ -283,7 +285,7 @@
 /* Begin PBXTargetDependency section */
 		A2D28DE6191965A200B66C24 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A2D28DC4191965A200B66C24 /* URBNImageHUD */;
+			target = A2D28DC4191965A200B66C24 /* URBNImageHUDExampleApp */;
 			targetProxy = A2D28DE5191965A200B66C24 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -386,9 +388,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "URBNImageHud/URBNImageHUD-Prefix.pch";
-				INFOPLIST_FILE = "URBNImageHud/URBNImageHUD-Info.plist";
-				PRODUCT_NAME = URBNImageHUD;
+				GCC_PREFIX_HEADER = "URBNImageHUDExampleApp/URBNImageHUDExampleApp-Prefix.pch";
+				INFOPLIST_FILE = "URBNImageHUDExampleApp/URBNImageHUDExampleApp-Info.plist";
+				PRODUCT_NAME = URBNImageHUDExampleApp;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -399,9 +401,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "URBNImageHud/URBNImageHUD-Prefix.pch";
-				INFOPLIST_FILE = "URBNImageHud/URBNImageHUD-Info.plist";
-				PRODUCT_NAME = URBNImageHUD;
+				GCC_PREFIX_HEADER = "URBNImageHUDExampleApp/URBNImageHUDExampleApp-Prefix.pch";
+				INFOPLIST_FILE = "URBNImageHUDExampleApp/URBNImageHUDExampleApp-Info.plist";
+				PRODUCT_NAME = URBNImageHUDExampleApp;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -409,20 +411,20 @@
 		A2D28DF5191965A200B66C24 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/URBNImageHud.app/URBNImageHud";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/URBNImageHUDExampleApp.app/URBNImageHud";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "URBNImageHud/URBNImageHud-Prefix.pch";
+				GCC_PREFIX_HEADER = "URBNImageHUDExampleApp/URBNImageHud-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "URBNImageHudTests/URBNImageHUD.temp_caseinsensitive_renameTests-Info.plist";
-				PRODUCT_NAME = URBNImageHUD.temp_caseinsensitive_renameTests;
+				INFOPLIST_FILE = "URBNImageHUDExampleAppTests/URBNImageHUDExampleApp.temp_caseinsensitive_renameTests-Info.plist";
+				PRODUCT_NAME = URBNImageHUDExampleApp.temp_caseinsensitive_renameTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -431,16 +433,16 @@
 		A2D28DF6191965A200B66C24 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/URBNImageHud.app/URBNImageHud";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/URBNImageHUDExampleApp.app/URBNImageHUDExampleApp";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "URBNImageHud/URBNImageHud-Prefix.pch";
-				INFOPLIST_FILE = "URBNImageHudTests/URBNImageHUD.temp_caseinsensitive_renameTests-Info.plist";
-				PRODUCT_NAME = URBNImageHUD.temp_caseinsensitive_renameTests;
+				GCC_PREFIX_HEADER = "URBNImageHUDExampleApp/URBNImageHud-Prefix.pch";
+				INFOPLIST_FILE = "URBNImageHUDExampleAppTests/URBNImageHUDExampleApp.temp_caseinsensitive_renameTests-Info.plist";
+				PRODUCT_NAME = URBNImageHUDExampleApp.temp_caseinsensitive_renameTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -449,7 +451,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A2D28DC0191965A200B66C24 /* Build configuration list for PBXProject "URBNImageHUD" */ = {
+		A2D28DC0191965A200B66C24 /* Build configuration list for PBXProject "URBNImageHUDExampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A2D28DEF191965A200B66C24 /* Debug */,
@@ -458,7 +460,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A2D28DF1191965A200B66C24 /* Build configuration list for PBXNativeTarget "URBNImageHUD" */ = {
+		A2D28DF1191965A200B66C24 /* Build configuration list for PBXNativeTarget "URBNImageHUDExampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A2D28DF2191965A200B66C24 /* Debug */,
@@ -467,7 +469,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A2D28DF4191965A200B66C24 /* Build configuration list for PBXNativeTarget "URBNImageHUDTests" */ = {
+		A2D28DF4191965A200B66C24 /* Build configuration list for PBXNativeTarget "URBNImageHUDExampleAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A2D28DF5191965A200B66C24 /* Debug */,

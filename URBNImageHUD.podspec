@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "URBNImageHUD"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "This is a simple hud which does one thing… It rotates an image to show indeterminant progress."
 
   s.description  = <<-DESC
